@@ -8,18 +8,26 @@ public class Kuis05Tyo {
         int jumlahKendaraan = 0;
         int lamaParkirTerlama = 0;
         int lebihDari3Jam = 0;
+        int nim2 = 45;
+        int batas = (nim2 % 3) + 2;
+        int inputgakValid = 0;
 
         System.out.print("Lama parkir (jam, 0 = selesai): ");
         jam = sc.nextInt();
 
-
         while (jam != 0) {
             if (jam < 1 || jam > 24) {
+                inputgakValid++;
                 System.out.println("Input tidak valid");
+                if (inputgakValid >= batas) {
+                    System.out.println("Batas input sudah tercapai");
+                    break;
+                }
                 System.out.print("Lama parkir (jam, 0 = selesai): ");
                 jam = sc.nextInt();
                 continue;
             }
+            inputgakValid = 0;
             // Tarif: jam pertama Rp 5000, jam berikutnya Rp 3000 per jam
             jumlahKendaraan++;
             int biaya = 5000 + (jam - 1) * 3000;
